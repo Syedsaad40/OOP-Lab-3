@@ -1,57 +1,35 @@
 #include<iostream>
+#include<string>
 using namespace std;
 class Employee{
-	string first_name;
-	string last_name;
-	double monthly_salary;
-	public:
-		void set_salary(int salary){
-			if(salary<0){
-				salary=0;
-			}
-			else{
-				monthly_salary=salary;
-			}
-		}
-		void set_firstname(string name){
-			first_name=name;
-		}
-			void set_lastname(string name){
-			last_name=name;
-		}
-		void get_firstname(string name){
-			first_name=name;
-		}
-		void get_lastname(string name){
-			last_name=name;
-		}
-		double increase_salary(double salary){
-			monthly_salary+=salary*0.1;
-			return monthly_salary;
-		}
-		void print_info(){
-			cout << "First Name: " << first_name << endl;
-        cout << "Last Name: " << last_name << endl;
-        cout << "Monthly Salary: $" << monthly_salary << endl;
-		}
+    private:
+        string firstName;
+        string lastName;
+        double salary;
+    public:
+        void setDetails(string n,string l,double s){
+            firstName=n;
+            lastName=l;
+            if(s<0.0){
+                salary=0.0;
+            }else{
+                salary=s;
+            }
+        };
+        void getSalary(){
+            cout<<"\n Yearly Salary : "<<salary*12;
+            cout<<"\n After 10% Raise : "<<(salary*12)*1.1;
+        };
 };
-int main(
-){
-Employee emp1;
-Employee emp2;
-emp1.set_firstname("Syed");
-emp1.set_lastname("Saad");
-emp2.set_firstname("Muhammad");
-emp2.set_lastname("Rayyan");
-emp1.set_salary(2000);
-emp2.set_salary(-100);
-emp1.get_firstname("Syed");
-emp1.get_lastname("Saad");
-emp1.get_firstname("Muhammad");
-emp1.get_firstname("Rayyan");
-emp1.increase_salary(2000);
-emp2.increase_salary(1000);
-emp1.print_info();
-emp2.print_info();
-	return 0;
+
+int main(int argc, char const *argv[])
+{
+    Employee e[2];
+    e[0].setDetails(argv[1], argv[2], stod(argv[3]));
+    e[1].setDetails(argv[4], argv[5], stod(argv[6]));
+    cout<<"\n Employee 1 salary : ";
+    e[0].getSalary();
+    cout<<"\n Employee 2 salary : ";
+    e[1].getSalary();
+    return 0;
 }
